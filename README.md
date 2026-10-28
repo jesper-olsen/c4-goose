@@ -53,7 +53,7 @@ solves the starting position. This matches the original Fhourstones CLI
 input format, so existing test/benchmark input files work unchanged.
 
 ```
-echo "4453" | ./c4_solve <inputs
+echo "4453" | ./c4_solve
 ```
 
 For each position it reports the game-theoretic score, log2 of positions
