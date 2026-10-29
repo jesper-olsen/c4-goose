@@ -85,7 +85,7 @@ score = 5 (+)  work = 29
 
 Tested with Goose v2026.3-141-gcce94b91 (runtime f2981814a754) and Apple clang version 21.0.0 (clang-2100.1.1.101) on a Macbook Air M5.
 
-On the same benchmark and same laptop, the original [original C](https://github.com/tromp/fhourstones/) implementation is roughly level and the 
+On the same benchmark and same laptop, the [original C](https://github.com/tromp/fhourstones/) implementation is roughly level and the 
 [Rust](https://github.com/jesper-olsen/connect-four) implementation ~10% slower.
 
 
