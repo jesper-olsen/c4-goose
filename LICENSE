@@ -1,6 +1,6 @@
 This repository contains a Goose port of parts of John Tromp's Fhourstones Connect Four solver.
 
-The c4_solver.goose file is derived from the original Fhourstones C implementation and remains subject to the original license terms:
+The c4_solve.goose file is derived from the original Fhourstones C implementation and remains subject to the original license terms:
 
 Copyright (c) 1996-2005 by John Tromp.
 

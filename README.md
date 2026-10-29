@@ -8,16 +8,14 @@ The [Goose](https://github.com/aardappel/goose) compiler - and its dependencies 
 
 ## Build
 
-You can run the code directly with
-```sh
-goose run c4_solve.goose
-```
-
-or build a native executable with
+Build a native executable with `make`, or directly with
 
 ```sh
 goose build c4_solve.goose
 ```
+
+`goose run c4_solve.goose` also works, but it compiles in-process with a slower backend
+(about 2.8 times slower here), so use the native build for benchmarks.
 
 
 ## Verification
@@ -32,12 +30,15 @@ Position (moves played)          | Score | Nodes searched
 13333111                         | Draw  |   169,704,432
 (empty board, full 42-ply solve) | Win   | 1,479,113,766
 
-Run the exact-node-count regression tests with:
+Check the scores, node counts and table statistics against `expected.txt` with:
 ```sh
-time make bench
+make test
 ```
 
+`make bench` runs the same positions and prints the timings:
+
 ```sh
+time make bench
 ./c4_solve < inputs
 Fhourstones 3.2 (Goose)
 Boardsize = 7x6
@@ -65,7 +66,10 @@ score = 5 (+)  work = 29
 47.43s user 0.12s system 99% cpu 47.663 total
 ```
 
-The above was generated on a Macbook Air M5 - on the same benchmark and same laptop, the [Rust](https://github.com/jesper-olsen/connect-four) and the [original C](https://github.com/tromp/fhourstones/) implementations take respectively 50.7 and 58.9 seconds (+6% and +19%).
+Tested with Goose v2026.3-141-gcce94b91 (runtime f2981814a754) and Apple clang version 21.0.0 (clang-2100.1.1.101) on a Macbook Air M5.
+
+On the same benchmark and same laptop, the original [original C](https://github.com/tromp/fhourstones/) implementation is roughly level and the 
+[Rust](https://github.com/jesper-olsen/connect-four) implementation ~10% slower.
 
 
 ## Usage: solve (benchmark / analysis)
