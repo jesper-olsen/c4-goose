@@ -290,6 +290,33 @@ fn solve(b: Board&) -> i32 {
     return ab(b, LOSS, WIN);
 }
 
+// Appends `prefix` and n / total to `out`, with three decimals.
+fn add_share(out: u8[>..]&, prefix: u8[:], n: i64, total: i64) {
+    format(out, prefix);
+    format_flt(out, n as f64 / total, 3);
+}
+
+// Prints the share of table entries holding each score, as the reference
+// implementations do: - loss, < draw or loss, = draw, > draw or win, + win.
+fn tt_stats() {
+    var count: i64[8] = [0; 8];
+    for i in tt.len {
+        let he = tt[i];
+        if big_lock(he) != 0 { count[big_score(he)] += 1; }
+        if new_lock(he) != 0 { count[new_score(he)] += 1; }
+    }
+    var total: i64 = 0;
+    for s in LOSS..WIN + 1 { total += count[s]; }
+    if total == 0 { return; }
+    var out: u8[>..] = [];
+    add_share(out, "- ", count[LOSS], total);
+    add_share(out, "  < ", count[DRAWLOSS], total);
+    add_share(out, "  = ", count[DRAW], total);
+    add_share(out, "  > ", count[DRAWWIN], total);
+    add_share(out, "  + ", count[WIN], total);
+    print(out);
+}
+
 // ---- driver ------------------------------------------------------------------
 
 fn score_char(s: i32) -> u8[:] {
@@ -319,6 +346,7 @@ fn main() {
         print("score = ", score, " (", score_char(score), ")  work = ", intlog(posed));
         let kpos10 = nodes * 10 / ms;
         print(nodes, " pos / ", ms, " msec = ", kpos10 / 10, ".", kpos10 % 10, " Kpos/sec");
+        tt_stats();
         line.clear();
     }
 }

@@ -1,0 +1,23 @@
+Fhourstones 3.2 (Goose)
+Boardsize = 7x6
+Using 8306069 transposition table entries of size 8 bytes.
+
+Solving 8-ply position after 45461667 . . .
+score = 5 (+)  work = 14
+51596 pos
+- 0.281  < 0.000  = 0.001  > 0.001  + 0.716
+
+Solving 8-ply position after 35333571 . . .
+score = 1 (-)  work = 21
+8716732 pos
+- 0.271  < 0.036  = 0.020  > 0.089  + 0.584
+
+Solving 8-ply position after 13333111 . . .
+score = 3 (=)  work = 26
+169704432 pos
+- 0.216  < 0.144  = 0.021  > 0.242  + 0.377
+
+Solving 0-ply position after  . . .
+score = 5 (+)  work = 29
+1479113766 pos
+- 0.249  < 0.125  = 0.027  > 0.191  + 0.408
