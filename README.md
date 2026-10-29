@@ -18,6 +18,23 @@ goose build c4_solve.goose
 (about 2.8 times slower here), so use the native build for benchmarks.
 
 
+## Usage: solve (benchmark / analysis)
+
+Reads one position per line from stdin, as a string of column digits
+(1–7, left to right); other characters are ignored, and an empty line
+solves the starting position. This matches the original Fhourstones CLI
+input format, so existing test/benchmark input files work unchanged.
+
+```
+echo "4453" | ./c4_solve
+```
+
+For each position it reports the game-theoretic score, log2 of positions
+stored in the transposition table ("work"), total nodes searched, search
+speed, and a histogram of stored transposition-table entries by score.
+
+
+
 ## Verification
 
 Checked against the original C (v3.2) and Java (v3.1) reference implementations, which agree
@@ -72,28 +89,12 @@ On the same benchmark and same laptop, the original [original C](https://github.
 [Rust](https://github.com/jesper-olsen/connect-four) implementation ~10% slower.
 
 
-## Usage: solve (benchmark / analysis)
-
-Reads one position per line from stdin, as a string of column digits
-(1–7, left to right); other characters are ignored, and an empty line
-solves the starting position. This matches the original Fhourstones CLI
-input format, so existing test/benchmark input files work unchanged.
-
-```
-echo "4453" | ./c4_solve
-```
-
-For each position it reports the game-theoretic score, log2 of positions
-stored in the transposition table ("work"), total nodes searched, search
-speed, and a histogram of stored transposition-table entries by score.
-
-
 
 ## References 
 
 1. [John Tromp's Connect Four page](https://tromp.github.io/c4/c4.html)
 2. [Fhourstones Benchmark](https://tromp.github.io/c4/fhour.html)
-3. ["The Complete Book of Connect Four",  James Dow Allen](https://fabpedigree.com/james/C4/c4_book.htm)
+3. ["The Complete Book of Connect Four", James Dow Allen](https://fabpedigree.com/james/C4/c4_book.htm)
 4. [Wikipedia's Connect Four](https://en.wikipedia.org/wiki/Connect_Four)
 5. [Minimax](https://en.wikipedia.org/wiki/Minimax)
 6. [Monte Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search)
